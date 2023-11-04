@@ -6,7 +6,6 @@ public class UE2UI {
     Scanner scan = new Scanner(System.in);
     static boolean running = true;
     public UE2UI() {
-
         while (running) {
             printUI();
             int input = scan.nextInt();

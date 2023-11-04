@@ -6,8 +6,12 @@ public class Customer {
     boolean smoker;
     String region;
     double charges;
+    int id;
 
-    public Customer(int age, String sex, double bmi, int children, boolean smoker, String region, double charges) {
+
+
+
+    public Customer(int age, String sex, double bmi, int children, boolean smoker, String region, double charges, int id) {
         this.age = age;
         this.sex = sex;
         this.bmi = bmi;
@@ -15,6 +19,7 @@ public class Customer {
         this.smoker = smoker;
         this.region = region;
         this.charges = charges;
+        this.id = id;
     }
 
     public int getAge() {
@@ -43,5 +48,26 @@ public class Customer {
 
     public double getCharges() {
         return charges;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", bmi=" + bmi +
+                ", children=" + children +
+                ", smoker=" + smoker +
+                ", region='" + region + '\'' +
+                ", charges=" + charges +
+                '}';
     }
 }

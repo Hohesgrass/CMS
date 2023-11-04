@@ -1,17 +1,17 @@
+import java.io.FileNotFoundException;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Eingabe with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        // Press Umschalt+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Umschalt+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Strg+F8.
-            System.out.println("i = " + i);
+    public static void main(String[] args) throws FileNotFoundException {
+        String csvPath = "C:\\Users\\alexa\\Desktop\\csv\\insurance.csv";
+        CustomerList cl = new CustomerList();
+        cl.addFromCSVFile(csvPath);
+        //cl.deleteCustomerById(13);
+        //cl.addCustomer(new Customer(23,"male", 32.11, 233, true, "husoland", 2323.223, 112));
+        for (Customer e : cl.filterByRegion("southwest").filterBySex("male").filterByAge(20).getCustomerList()) {
+            System.out.println(e.toString());
         }
+
     }
 }
