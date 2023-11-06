@@ -1,6 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class CustomerList {
@@ -110,6 +113,139 @@ public class CustomerList {
             cl.add(id-1,customer);
         }
     }
+
+    public ArrayList<Customer> sortByAge() {
+        boolean swapped;
+        ArrayList<Customer> sl = cl;
+        int n = sl.size();
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (sl.get(j).getAge() > sl.get(j + 1).getAge()) {
+                    Customer temp = sl.get(j);
+                    sl.set(j, sl.get(j + 1));
+                    sl.set(j + 1, temp);
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+        return sl;
+    }
+
+    public ArrayList<Customer> sortByChildren() {
+        boolean swapped;
+        ArrayList<Customer> sl = cl;
+        int n = sl.size();
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (sl.get(j).getChildren() > sl.get(j + 1).getChildren()) {
+                    Customer temp = sl.get(j);
+                    sl.set(j, sl.get(j + 1));
+                    sl.set(j + 1, temp);
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+        return sl;
+    }
+
+    public ArrayList<Customer> sortById() {
+        boolean swapped;
+        ArrayList<Customer> sl = cl;
+        int n = sl.size();
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (sl.get(j).getId() > sl.get(j + 1).getId()) {
+                    Customer temp = sl.get(j);
+                    sl.set(j, sl.get(j + 1));
+                    sl.set(j + 1, temp);
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+        return sl;
+    }
+
+    public ArrayList<Customer> sortBySex() {
+        boolean swapped;
+        ArrayList<Customer> sl = cl;
+        int n = sl.size();
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (sl.get(j).getAge() > sl.get(j + 1).getAge()) {
+                    Customer temp = sl.get(j);
+                    sl.set(j, sl.get(j + 1));
+                    sl.set(j + 1, temp);
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+        return sl;
+    }
+
+    public ArrayList<Customer> sortByRegion(String region) {
+        boolean swapped;
+        ArrayList<Customer> sl = cl;
+        int n = sl.size();
+        for (int i = n; i > 0; i--) {
+            swapped = false;
+
+            for (int j = i-1; j > 0; j--) {
+                if (sl.get(j).getRegion().equals(region)) {
+                    Customer temp = sl.get(j);
+                    sl.set(j, sl.get(j - 1));
+                    sl.set(j - 1, temp);
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+        return sl;
+    }
+
+    public ArrayList<Customer> sortByCharges() {
+        boolean swapped;
+        ArrayList<Customer> sl = cl;
+        int n = sl.size();
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (sl.get(j).getCharges() > sl.get(j + 1).getCharges()) {
+                    Customer temp = sl.get(j);
+                    sl.set(j, sl.get(j + 1));
+                    sl.set(j + 1, temp);
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+        return sl;
+    }
+
     public ArrayList<Customer> getCustomerList() {
         return cl;
     }
@@ -124,4 +260,6 @@ public class CustomerList {
         }
         return cl.size()+2;
     }
+
+
 }
