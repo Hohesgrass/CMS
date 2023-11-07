@@ -56,32 +56,7 @@ public class CustomerList {
         return clRegion;
     }
 
-    public CustomerList filterByAge(int age){
-        CustomerList clAge = new CustomerList();
-        for (Customer e : cl) {
-            if (e.getAge() == age){
-                clAge.addCustomerToList(e);
-            }
-        }
-        return clAge;
-    }
 
-    public CustomerList filterBySmoker(boolean smoker){
-        CustomerList clSmoker = new CustomerList();
-        for (Customer e : cl) {
-            if (e.isSmoker() == smoker){
-                clSmoker.addCustomerToList(e);
-            }
-        }
-        return clSmoker;
-    }
-    /*public ArrayList<Customer> sortByCharges(){
-
-    }*/
-
-    /*public ArrayList<Customer> sortByBMI(){
-
-    }*/
 
     public Customer searchById(int id){
         for (Customer e : cl) {
@@ -94,13 +69,6 @@ public class CustomerList {
 
     public void deleteCustomerById(int id){
         cl.removeIf(e -> e.getId() == id);
-        /*
-        for (Customer e : cl){
-            if (e.getId() == id){
-                cl.remove(e);
-            }
-        }
-        */
     }
 
     public void addCustomer(Customer customer){
@@ -158,6 +126,28 @@ public class CustomerList {
         return sl;
     }
 
+    public ArrayList<Customer> sortByBmi() {
+        boolean swapped;
+        ArrayList<Customer> sl = cl;
+        int n = sl.size();
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (sl.get(j).getBmi() > sl.get(j + 1).getBmi()) {
+                    Customer temp = sl.get(j);
+                    sl.set(j, sl.get(j + 1));
+                    sl.set(j + 1, temp);
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+        return sl;
+    }
+
     public ArrayList<Customer> sortById() {
         boolean swapped;
         ArrayList<Customer> sl = cl;
@@ -180,18 +170,18 @@ public class CustomerList {
         return sl;
     }
 
-    public ArrayList<Customer> sortBySex() {
+    public ArrayList<Customer> sortBySex(String sex) {
         boolean swapped;
         ArrayList<Customer> sl = cl;
         int n = sl.size();
-        for (int i = 0; i < n - 1; i++) {
+        for (int i = n; i > 0; i--) {
             swapped = false;
 
-            for (int j = 0; j < n - i - 1; j++) {
-                if (sl.get(j).getAge() > sl.get(j + 1).getAge()) {
+            for (int j = i-1; j > 0; j--) {
+                if (sl.get(j).getSex().equals(sex)) {
                     Customer temp = sl.get(j);
-                    sl.set(j, sl.get(j + 1));
-                    sl.set(j + 1, temp);
+                    sl.set(j, sl.get(j - 1));
+                    sl.set(j - 1, temp);
                     swapped = true;
                 }
             }
@@ -259,6 +249,26 @@ public class CustomerList {
             counter++;
         }
         return cl.size()+2;
+    }
+
+    public CustomerList filterByAge(int age){
+        CustomerList clAge = new CustomerList();
+        for (Customer e : cl) {
+            if (e.getAge() == age){
+                clAge.addCustomerToList(e);
+            }
+        }
+        return clAge;
+    }
+
+    public CustomerList filterBySmoker(boolean smoker){
+        CustomerList clSmoker = new CustomerList();
+        for (Customer e : cl) {
+            if (e.isSmoker() == smoker){
+                clSmoker.addCustomerToList(e);
+            }
+        }
+        return clSmoker;
     }
 
 

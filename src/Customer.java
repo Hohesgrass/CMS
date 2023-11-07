@@ -8,9 +8,6 @@ public class Customer {
     double charges;
     int id;
 
-
-
-
     public Customer(int age, String sex, double bmi, int children, boolean smoker, String region, double charges, int id) {
         this.age = age;
         this.sex = sex;
